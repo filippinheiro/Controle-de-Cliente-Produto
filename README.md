@@ -1,3 +1,4 @@
-# Controle-de-Cliente-Produto
+#Controle-de-Cliente-Produto
 
-Trabalho em C da Disciplina de Estrutura de Dados com uso de listas para controle de produtos e clientes
+Trabalho de estrutura de Dados para criar uma aplicação básica de controle de produtos e cliente, com a implementação de listas 
+simplesmente encadeadas e listas com descritor.
