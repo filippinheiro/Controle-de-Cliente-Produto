@@ -15,7 +15,7 @@ int vazia(NoLista* l){
 	return (l == NULL);
 } 
 
-void inserir(NoLista** l, Cliente cliente) {
+void insereOrdenado(NoLista** l, Cliente cliente) {
 	NoLista *p, *tmp = NULL;
 	for(p=*l; p!=NULL && strcmp(p->info.nome, cliente.nome) < 0; p=p->prox)
 		tmp = p;

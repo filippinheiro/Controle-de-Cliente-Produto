@@ -21,7 +21,7 @@ int tamanho(NoLista*);
 
 NoLista* ultimo(NoLista*);
 
-void inserir(NoLista**, Cliente);
+void insereOrdenado(NoLista**, Cliente);
 
 
 void imprime(NoLista*);

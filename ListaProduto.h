@@ -16,6 +16,7 @@ typedef struct descritor {
 
 Descritor criarLista();
 
+Produto* buscaPorId(Descritor* d, int id);
 
 int estaVazia(Descritor*);
 

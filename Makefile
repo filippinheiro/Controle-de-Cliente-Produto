@@ -1,12 +1,15 @@
 all: compila
-compila: main.o ListaCliente.o ListaProduto.o Produto.o Cliente.o
-	gcc main.o ListaCliente.o ListaProduto.o Produto.o Cliente.o -o prog
+	./prog
+compila: main.o ListaCliente.o ListaProduto.o Produto.o Cliente.o menu.o
+	gcc main.o ListaCliente.o ListaProduto.o Produto.o Cliente.o menu.o -o prog
 main.o: main.c
 	gcc -c main.c
 ListaCliente.o: ListaCliente.c
 	gcc -c ListaCliente.c
 ListaProduto.o:ListaProduto.c
 	gcc -c ListaProduto.c
+menu.o: menu.c
+	gcc -c menu.c
 Produto.o: Produto.c
 	gcc -c Produto.c
 Cliente.o: Cliente.c

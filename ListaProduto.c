@@ -2,13 +2,15 @@
 #include <stdio.h>
 #include "Produto.h"
 
+//TODO: criar função de registrar venda
+
 typedef struct no {
 	struct no* prox;
 	Produto info;
 } No;
 
 typedef struct descritor {
-	No* prim;
+	No* prim; 
 	No* ult;
 	int n;
 } Descritor; 
@@ -20,6 +22,13 @@ Descritor criarLista() {
 	d.ult = NULL;
 	return d;
 } 
+
+Produto* buscaPorId(Descritor* d, int id) {
+    No* p;
+    for(p=d->prim; p != NULL && p->info.id != id; p=p->prox);
+    return (&p->info);
+} 
+
 
 
 int estaVazia(Descritor* d) {
@@ -42,6 +51,10 @@ void insereProduto(Descritor* d, Produto produto) {
 		exit(1);
 	} 
 } 
+
+
+
+
 
 void remover(Descritor* d, int id) {
 	No *p, *ant = NULL;

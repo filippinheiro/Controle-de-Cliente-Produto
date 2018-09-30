@@ -8,6 +8,8 @@ typedef struct produto {
 	char desc[80];
 } Produto;
 
+
+
 int idTrackP = 1;
 
 Produto* criarProduto() {
@@ -32,6 +34,7 @@ Produto* criarProduto() {
 void editarProduto(Produto* produto) {
 	if(produto!=NULL) {
 		printf("Digite a nova descrição do produto >> ");
+        setbuf(stdin, NULL);
 		scanf("%80[^\n]", produto->desc);
 		setbuf(stdin, NULL);
 	} else
