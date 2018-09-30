@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "Produto.h"
 
-//TODO: criar função de registrar venda
+//TODO: criar função de registrar venda. DONE
 
 typedef struct no {
 	struct no* prox;
@@ -52,16 +52,14 @@ void insereProduto(Descritor* d, Produto produto) {
 	} 
 } 
 
-
-
-
-
 void remover(Descritor* d, int id) {
 	No *p, *ant = NULL;
 	for(p=d->prim; p!=NULL&&p->info.id!=id;p=p->prox)
 		ant = p;
-	if(p==NULL)
+	if(p==NULL) {
 		printf("Elemento não encontrado\n");
+        system("read b");
+    }
 	else {
 		if(ant==NULL) {
 			d->prim = p->prox;
@@ -83,6 +81,12 @@ void libera(Descritor* d){
 }
 
 */
+
+void vender(Descritor* d, Produto* produto, int id) {
+    produto->qtd--;
+    if(produto->qtd == 0) 
+        remover(d, id);
+}
 
 void imprimeTudo(Descritor* d) {
 	if(!estaVazia(d)) {

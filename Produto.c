@@ -33,6 +33,9 @@ Produto* criarProduto() {
 
 void editarProduto(Produto* produto) {
 	if(produto!=NULL) {
+        printf("Digite o novo nome do produto >> ");
+        setbuf(stdin, NULL);
+        printf("%30[^\n]", produto->nome);
 		printf("Digite a nova descrição do produto >> ");
         setbuf(stdin, NULL);
 		scanf("%80[^\n]", produto->desc);

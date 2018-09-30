@@ -16,7 +16,9 @@ typedef struct descritor {
 
 Descritor criarLista();
 
-Produto* buscaPorId(Descritor* d, int id);
+Produto* buscaPorId(Descritor*, int);
+
+void vender(Descritor*, Produto*, int);
 
 int estaVazia(Descritor*);
 

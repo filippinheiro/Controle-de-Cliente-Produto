@@ -15,4 +15,4 @@ Produto.o: Produto.c
 Cliente.o: Cliente.c
 	gcc -c Cliente.c
 clean:
-	rm ListaCliente.o main.o ListaProduto.o Produto.o Cliente.o prog
+	rm ListaCliente.o main.o ListaProduto.o Produto.o Cliente.o menu.o

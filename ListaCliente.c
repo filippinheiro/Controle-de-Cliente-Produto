@@ -46,8 +46,10 @@ void removerCliente(NoLista** l, char* nome) {
 	NoLista *p, *ant = NULL;
 	for(p=*l; p != NULL && strcmp(p->info.nome,nome) != 0; p=p->prox)
 		ant = p;
-	if(p==NULL) 		
+	if(p==NULL) { 		
 		printf("\nElemento não encontrado\n");
+        system("read b");
+    }
 	else {
 		if (ant == NULL) 
 			*l = p->prox;
