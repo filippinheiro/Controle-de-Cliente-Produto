@@ -23,17 +23,22 @@ Descritor criarLista() {
 	return d;
 } 
 
-Produto* buscaPorId(Descritor* d, int id) {
-    No* p;
-    for(p=d->prim; p != NULL && p->info.id != id; p=p->prox);
-    return (&p->info);
-} 
-
-
 
 int estaVazia(Descritor* d) {
 	return(d->n==0);
 }
+
+
+Produto* buscaPorId(Descritor* d, int id) {
+    if(!estaVazia(d)) {
+        No* p;
+        for(p=d->prim; p != NULL && p->info.id != id; p=p->prox);
+        if(p!=NULL)
+            return (&p->info);
+    } 
+    return NULL;
+} 
+
 
 void insereProduto(Descritor* d, Produto produto) {
 	No* novo = (No*)malloc(sizeof(No));
@@ -83,9 +88,14 @@ void libera(Descritor* d){
 */
 
 void vender(Descritor* d, Produto* produto, int id) {
-    produto->qtd--;
-    if(produto->qtd == 0) 
-        remover(d, id);
+    if(produto != NULL) {
+        produto->qtd--;
+        if(produto->qtd == 0) 
+            remover(d, id);
+    } else {
+        printf("Elemento não encontrado\n");
+        system("read b");
+    }
 }
 
 void imprimeTudo(Descritor* d) {

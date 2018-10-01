@@ -14,11 +14,11 @@ int main() {
     NoLista* l = criar();
     Descritor d = criarLista();
     while(a) {
-    showMenu();
-    int opc;
-    scanf(" %d", &opc);
-    a = menu(opc, &l, &d);
-    system("clear");
+        showMenu();
+        int opc;
+        scanf(" %d", &opc);
+        a = menu(opc, &l, &d);
+        system("clear");
     }
     
         
