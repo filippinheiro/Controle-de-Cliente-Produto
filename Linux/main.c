@@ -20,8 +20,7 @@ int main() {
         a = menu(opc, &l, &d);
         system("clear");
     }
-
-
+    return 0;
 }
 
 
