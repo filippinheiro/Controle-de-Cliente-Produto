@@ -44,7 +44,7 @@ int menu(int opc, NoLista** l, Descritor* d) {
             scanf("%d", &id);
             vender(d, buscaPorId(d, id), id);
             return true;
-        case 9 :
+        case 9 : 
             return false;
-        }
+        } 
 }

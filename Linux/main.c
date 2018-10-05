@@ -3,9 +3,9 @@
 #include "Cliente.h"
 #include "menu.h"
 #include "Produto.h"
+#include "menu.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "menu.h"
 
 void showMenu();
 
@@ -19,8 +19,7 @@ int main() {
         scanf(" %d", &opc);
         a = menu(opc, &l, &d);
         system("clear");
-    }
-    return 0;
+    } 
 }
 
 

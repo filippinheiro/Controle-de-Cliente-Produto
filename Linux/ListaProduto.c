@@ -24,7 +24,6 @@ Descritor criarLista() {
 }
 
 
-
 int estaVazia(Descritor* d) {
 	return(d->n==0);
 }
@@ -52,7 +51,7 @@ void insereProduto(Descritor* d, Produto produto) {
 			d->prim = novo;
 		d->ult = novo;
 		d->n++;
-		system("echo salvo com sucesso; read b");
+		system("echo Salvo com sucesso; read b");
 	} else {
 		printf("Erro de memória!\n");
 		exit(1);
@@ -79,7 +78,7 @@ void remover(Descritor* d, int id) {
 		}
 		free(p);
 		d->n--;
-		system("echo removido com sucesso; read b");
+		system("echo Removido com sucesso; read b");
 	}
 }
 
