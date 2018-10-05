@@ -19,7 +19,9 @@ int main() {
         scanf(" %d", &opc);
         a = menu(opc, &l, &d);
         system("clear");
-    } 
+    }
+
+
 }
 
 
