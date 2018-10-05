@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 void showMenu();
-	
+
 int main() {
     int a = true;
     NoLista* l = criar();
@@ -20,9 +20,9 @@ int main() {
         a = menu(opc, &l, &d);
         system("clear");
     }
-    
-        
-} 
+
+
+}
 
 
 
@@ -40,4 +40,3 @@ void showMenu() {
     printf("Escolha uma opção:\n");
     printf("-------------------------------------------\n");
 }
-

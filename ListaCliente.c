@@ -4,7 +4,7 @@
 #include "Cliente.h"
 typedef struct nolista {
 	Cliente info;
-	struct nolista* prox;	
+	struct nolista* prox;
 } NoLista;
 
 NoLista* criar() {
@@ -13,7 +13,7 @@ NoLista* criar() {
 
 int vazia(NoLista* l){
 	return (l == NULL);
-} 
+}
 
 void insereOrdenado(NoLista** l, Cliente cliente) {
 	NoLista *p, *tmp = NULL;
@@ -30,6 +30,7 @@ void insereOrdenado(NoLista** l, Cliente cliente) {
 			novo->prox = p;
 			tmp->prox = novo;
 		}
+		system("echo salvo com sucesso; read b");
 	} else {
 		printf("Falha de Memória!\n");
 		exit(1);
@@ -40,39 +41,40 @@ void insereOrdenado(NoLista** l, Cliente cliente) {
 NoLista* buscaElemento(NoLista* l, char* nome){
 	for(l; l != NULL && l->info.nome!=nome; l=l->prox);
 	return l;
-} 
+}
 
 void removerCliente(NoLista** l, char* nome) {
 	NoLista *p, *ant = NULL;
 	for(p=*l; p != NULL && strcmp(p->info.nome,nome) != 0; p=p->prox)
 		ant = p;
-	if(p==NULL) { 		
+	if(p==NULL) {
 		printf("Elemento não encontrado\n");
         system("read b");
     }
 	else {
-		if (ant == NULL) 
+		if (ant == NULL)
 			*l = p->prox;
 		else
 			ant->prox = p->prox;
 		free(p);
-	} 
-}	
+		system("echo removido com sucesso; read b");
+	}
+}
 
 void liberaLista(NoLista** l) {
 	NoLista *p, *tmp;
-	for(p=*l; p!=NULL; p=tmp) { 
+	for(p=*l; p!=NULL; p=tmp) {
 		tmp=p->prox;
 		free(p);
-	} 
+	}
 	*l = criar();
-}  
+}
 
 NoLista* ultimo(NoLista* l) {
 	NoLista *p;
 	for(p=l; p->prox != NULL; p=p->prox);
 	return p;
-} 
+}
 
 int tamanho(NoLista* l) {
 	int i = 0;
@@ -89,8 +91,8 @@ void imprime(NoLista *l){
 		for(p=l; p!=NULL; p=p->prox) {
 			imprimeCliente(&p->info);
 			i++;
-		} 
+		}
 	} else {
 		printf("Lista Vazia!\n");
-	}	
-} 
+	}
+}
