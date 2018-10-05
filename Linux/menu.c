@@ -4,13 +4,16 @@
 #include "Cliente.h"
 #include "Produto.h"
 #include "ListaProduto.h"
+#include "Estoque.h"
+
+
 
 #define true 1
 #define false 0
 
 //TODO: Acertar a busca por id dos produtos. DONE
 
-int menu(int opc, NoLista** l, Descritor* d) {
+int menu(int opc, NoLista** l, Descritor* d, Estoque* e) {
     int id;
     char nome[30];
 	switch(opc) {
@@ -24,7 +27,7 @@ int menu(int opc, NoLista** l, Descritor* d) {
         case 3 : imprime(*l);
             system("read b");
             return true;
-        case 4 : insereProduto(d, *criarProduto());
+        case 4 : insereProduto(d, *criarProduto(), e);
             return true;
         case 5 : printf("Digite o id do produto a ser removido >> ");
             setbuf(stdin, NULL);
@@ -44,7 +47,7 @@ int menu(int opc, NoLista** l, Descritor* d) {
             scanf("%d", &id);
             vender(d, buscaPorId(d, id), id);
             return true;
-        case 9 : 
+        case 9 :
             return false;
-        } 
+        }
 }

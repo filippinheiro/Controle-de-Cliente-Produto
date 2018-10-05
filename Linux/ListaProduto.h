@@ -12,7 +12,7 @@ typedef struct descritor {
 	No* prim;
 	No* ult;
 	int n;
-} Descritor; 
+} Descritor;
 
 Descritor criarLista();
 

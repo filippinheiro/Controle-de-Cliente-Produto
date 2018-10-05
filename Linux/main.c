@@ -3,26 +3,30 @@
 #include "Cliente.h"
 #include "menu.h"
 #include "Produto.h"
-#include "menu.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "Estoque.h"
+#include "menu.h"
+
 
 void showMenu();
-	
+
 int main() {
     int a = true;
     NoLista* l = criar();
     Descritor d = criarLista();
+		Estoque e = stageEstoque();
     while(a) {
+				printf("Qtde de produtos em estoque - %d", e.tamanho);
         showMenu();
         int opc;
         scanf(" %d", &opc);
-        a = menu(opc, &l, &d);
+        a = menu(opc, &l, &d, &e);
         system("clear");
     }
-    
-        
-} 
+
+
+}
 
 
 
@@ -40,4 +44,3 @@ void showMenu() {
     printf("Escolha uma opção:\n");
     printf("-------------------------------------------\n");
 }
-

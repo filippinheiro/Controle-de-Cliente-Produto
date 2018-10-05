@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "Produto.h"
+##include "Estoque.h"
 
 //TODO: criar função de registrar venda. DONE
 
@@ -10,10 +11,10 @@ typedef struct no {
 } No;
 
 typedef struct descritor {
-	No* prim; 
+	No* prim;
 	No* ult;
 	int n;
-} Descritor; 
+} Descritor;
 
 Descritor criarLista() {
 	Descritor d;
@@ -21,7 +22,8 @@ Descritor criarLista() {
 	d.prim = NULL;
 	d.ult = NULL;
 	return d;
-} 
+}
+
 
 
 int estaVazia(Descritor* d) {
@@ -35,27 +37,29 @@ Produto* buscaPorId(Descritor* d, int id) {
         for(p=d->prim; p != NULL && p->info.id != id; p=p->prox);
         if(p!=NULL)
             return (&p->info);
-    } 
+    }
     return NULL;
-} 
+}
 
 
-void insereProduto(Descritor* d, Produto produto) {
+void insereProduto(Descritor* d, Produto produto, Estoque* e) {
 	No* novo = (No*)malloc(sizeof(No));
-	if(novo!=NULL) { 
+	if(novo!=NULL) {
 		novo->info = produto;
 		novo->prox = NULL;
-		if(!estaVazia(d)) 
+		if(!estaVazia(d))
 			d->ult->prox = novo;
-		else 
+		else
 			d->prim = novo;
 		d->ult = novo;
 		d->n++;
+		setTamanho(e, (d->n+produto->qtd));
+	system("echo salvo com sucesso; read b");
 	} else {
 		printf("Erro de memória!\n");
 		exit(1);
-	} 
-} 
+	}
+}
 
 void remover(Descritor* d, int id) {
 	No *p, *ant = NULL;
@@ -76,9 +80,9 @@ void remover(Descritor* d, int id) {
 				d->ult = ant;
 		}
 		free(p);
-		d->n--;		
-	}	
-} 
+		d->n--;
+	}
+}
 
 /*
 void libera(Descritor* d){
@@ -90,8 +94,15 @@ void libera(Descritor* d){
 void vender(Descritor* d, Produto* produto, int id) {
     if(produto != NULL) {
         produto->qtd--;
-        if(produto->qtd == 0) 
+        if(produto->qtd == 0) {
             remover(d, id);
+						if(buscaPorId(d,id)!=NULL) {
+							printf("ERRO AO REMOVER ITEM\n");
+							exit(1);
+						}
+				}
+			printf("Venda registrada com sucesso!\n");
+			system("read b");
     } else {
         printf("Elemento não encontrado\n");
         system("read b");
@@ -101,9 +112,9 @@ void vender(Descritor* d, Produto* produto, int id) {
 void imprimeTudo(Descritor* d) {
 	if(!estaVazia(d)) {
 		No* n;
-		for(n=d->prim; n!=NULL; n=n->prox) 
+		for(n=d->prim; n!=NULL; n=n->prox)
 			imprimirProduto(&n->info);
 		printf("\n");
-	} else 
+	} else
 		printf("Lista Vazia!\n");
-} 
+}
