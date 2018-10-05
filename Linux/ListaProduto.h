@@ -22,7 +22,7 @@ void vender(Descritor*, Produto*, int);
 
 int estaVazia(Descritor*);
 
-void insereProduto(Descritor*,Produto);
+void insereProduto(Descritor*, Produto)
 
 void remover(Descritor*,int);
 

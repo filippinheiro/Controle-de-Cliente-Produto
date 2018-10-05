@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "Produto.h"
-##include "Estoque.h"
 
 //TODO: criar função de registrar venda. DONE
 
@@ -42,7 +41,7 @@ Produto* buscaPorId(Descritor* d, int id) {
 }
 
 
-void insereProduto(Descritor* d, Produto produto, Estoque* e) {
+void insereProduto(Descritor* d, Produto produto) {
 	No* novo = (No*)malloc(sizeof(No));
 	if(novo!=NULL) {
 		novo->info = produto;
@@ -53,8 +52,7 @@ void insereProduto(Descritor* d, Produto produto, Estoque* e) {
 			d->prim = novo;
 		d->ult = novo;
 		d->n++;
-		setTamanho(e, (d->n+produto->qtd));
-	system("echo salvo com sucesso; read b");
+		system("echo salvo com sucesso; read b");
 	} else {
 		printf("Erro de memória!\n");
 		exit(1);
@@ -81,6 +79,7 @@ void remover(Descritor* d, int id) {
 		}
 		free(p);
 		d->n--;
+		system("echo removido com sucesso; read b");
 	}
 }
 

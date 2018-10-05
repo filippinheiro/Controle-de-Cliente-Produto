@@ -57,6 +57,7 @@ void removerCliente(NoLista** l, char* nome) {
 		else
 			ant->prox = p->prox;
 		free(p);
+		system("echo removido com sucesso; read b");
 	}
 }
 
