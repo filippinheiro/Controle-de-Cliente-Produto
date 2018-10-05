@@ -8,5 +8,7 @@ simplesmente encadeadas e listas com descritor.
 	execute the command make, everything will be done afterwards.
 	
 	Only execute in Linux, further updates will grant windows versions
+	
+	You can also execute ./prog, if the file exists.
 
  versão 1.1.0
