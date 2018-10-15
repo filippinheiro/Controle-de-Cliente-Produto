@@ -33,21 +33,35 @@ Produto* criarProduto() {
 
 void editarProduto(Produto* produto) {
 	if(produto != NULL) {
-        printf("Digite o novo nome do produto >> ");
-        setbuf(stdin, NULL);
-        scanf("%30[^\n]", produto->nome);
+		int a = 0;
+		char resp;
+		do {
+		printf("Deseja alterar o nome do produto também? [s/n] >> ");
+		setbuf(stdin, NULL);
+		scanf("%c", resp);
+		switch (resp) {
+			case 's' : break;
+			case 'n' : break;
+			default: a = 1;
+		}
+	} while(a);
+	if(resp == 's') {
+  	printf("Digite o novo nome do produto >> ");
+  	setbuf(stdin, NULL);
+  	scanf("%30[^\n]", produto->nome);
+	}
 		printf("Digite a nova descrição do produto >> ");
-        setbuf(stdin, NULL);
+    setbuf(stdin, NULL);
 		scanf("%80[^\n]", produto->desc);
 	} else {
 		printf("Produto inexistente!\n");
         system("read b");
     }
-} 
+}
 
 void imprimirProduto(Produto* produto) {
-	if(produto!=NULL) 
+	if(produto!=NULL)
 		printf("%d: %s - %s Qtde: %d\n", produto->id, produto->nome, produto->desc, produto->qtd);
 	else
 		printf("Produto inexistente!\n");
-} 
+}
