@@ -58,6 +58,8 @@ void insereProduto(Descritor* d, Produto produto) {
 	}
 }
 
+//TODO: implementar a opção de escolher a quantidade de produtos a serem vendidos
+
 void remover(Descritor* d, int id) {
 	No *p, *ant = NULL;
 	for(p=d->prim; p!=NULL&&p->info.id!=id;p=p->prox)
