@@ -1,5 +1,5 @@
 all: compila
-	cls, prog, make clean --silent
+	clear; ./prog; make clean --silent
 compila: main.o ListaCliente.o ListaProduto.o Produto.o Cliente.o menu.o
 	gcc main.o ListaCliente.o ListaProduto.o Produto.o Cliente.o menu.o -o prog
 main.o: main.c
@@ -15,4 +15,4 @@ Produto.o: Produto.c
 Cliente.o: Cliente.c
 	gcc -c Cliente.c
 clean:
-	del ListaCliente.o main.o ListaProduto.o Produto.o Cliente.o menu.o
+	rm ListaCliente.o main.o ListaProduto.o Produto.o Cliente.o menu.o

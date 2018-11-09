@@ -11,7 +11,7 @@
 //TODO: Acertar a busca por id dos produtos. DONE
 
 int menu(int opc, NoLista** l, Descritor* d) {
-    int id;
+    int id, qtd;
     char nome[30];
 	switch(opc) {
         case 1 : insereOrdenado(l, *criarCliente());
@@ -42,7 +42,9 @@ int menu(int opc, NoLista** l, Descritor* d) {
         case 8 : printf("Digite o id do produto >> ");
             setbuf(stdin, NULL);
             scanf("%d", &id);
-            vender(d, buscaPorId(d, id), id);
+			printf("Digite a quantidade vendida >> ");
+			scanf("%d", &qtd);
+            vender(d,buscaPorId(d, id), qtd);
             return true;
         case 9 : 
             return false;
