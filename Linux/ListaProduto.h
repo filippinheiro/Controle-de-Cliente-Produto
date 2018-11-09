@@ -18,7 +18,7 @@ Descritor criarLista();
 
 Produto* buscaPorId(Descritor*, int);
 
-void vender(Descritor*, Produto*, int);
+void vender(Descritor*,Produto*, int);
 
 int estaVazia(Descritor*);
 

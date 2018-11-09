@@ -58,6 +58,8 @@ void insereProduto(Descritor* d, Produto produto) {
 	}
 }
 
+//TODO: implementar a opção de escolher a quantidade de produtos a serem vendidos
+
 void remover(Descritor* d, int id) {
 	No *p, *ant = NULL;
 	for(p=d->prim; p!=NULL&&p->info.id!=id;p=p->prox)
@@ -89,6 +91,7 @@ void libera(Descritor* d){
 
 */
 
+<<<<<<< HEAD
 void vender(Descritor* d, Produto* produto, int id) {
     if(produto != NULL) {
         produto->qtd--;
@@ -105,7 +108,32 @@ void vender(Descritor* d, Produto* produto, int id) {
         printf("Elemento não encontrado\n");
         system("read b");
     }
+=======
+void vender(Descritor* d, Produto* p, int quantidade){
+	if(p!=NULL) {
+    	if((quantidade > p->qtd) || (quantidade <= 0)) {
+    	    printf("Venda não realizada!\nNão há essa quantidade em estoque ou a quantidade informada é inválida.\n");
+			system("read b");
+		}
+    	else{
+    	    p->qtd -= quantidade;
+    	    printf("Venda realizada com sucesso!\n");
+			if(p->qtd != 0) {
+				imprimirProduto(p);
+				system("read b");
+			}
+			else {
+				system("echo Estas foram as ultimas unidades, produto agora esgotado. Removendo da lista...");
+				remover(d, p->id);
+			}
+			
+    	}
+	} else 
+		printf("Produto inexistente\n");
+		system("read b");
+>>>>>>> zip-lib
 }
+
 
 void imprimeTudo(Descritor* d) {
 	if(!estaVazia(d)) {
