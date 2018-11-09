@@ -1,0 +1,9 @@
+
+void venderProduto(Produto* p, int qtd){
+    if((qtd > p->quantidade) || (qtd <= 0))
+        printf("Venda não realizada!\nNão há essa quantidade em estoque ou a quantidade informada é inválida.\n");
+    else{
+        p->quantidade -= qtd;
+        printf("Venda realizada com sucesso!\n");
+    }
+}
