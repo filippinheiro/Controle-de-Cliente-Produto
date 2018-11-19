@@ -93,7 +93,15 @@ void libera(Descritor* d){
 
 void vender(Descritor* d, Produto* produto, int id) {
     if(produto != NULL) {
-        produto->qtd--;
+        printf("Digite a quantidade a ser vendida >> ");
+        int n;
+        setbuf(stdin, NULL);
+        scanf("%d", &n);
+        if(n > produto->qtd || n <= 0) {
+            system("echo Quantidade maior do que há no estoque ou inválida; read b");
+            return;
+        } else
+            produto->qtd-=n;
         if(produto->qtd == 0) {
             remover(d, id);
 						if(buscaPorId(d,id)!=NULL) {
