@@ -3,6 +3,7 @@
 #include "ListaCliente.h"
 #include "Cliente.h"
 #include "Produto.h"
+#include <conio.h>
 #include "ListaProduto.h"
 
 #define true 1
@@ -22,7 +23,7 @@ int menu(int opc, NoLista** l, Descritor* d) {
             removerCliente(l, nome);
             return true;
         case 3 : imprime(*l);
-            system("read b");
+            getch();
             return true;
         case 4 : insereProduto(d, *criarProduto());
             return true;
@@ -32,7 +33,7 @@ int menu(int opc, NoLista** l, Descritor* d) {
             remover(d, id);
             return true;
         case 6 : imprimeTudo(d);
-            system("read b");
+            getch();
             return true;
         case 7 : printf("Digite o id do produto >> ");
              setbuf(stdin, NULL);
