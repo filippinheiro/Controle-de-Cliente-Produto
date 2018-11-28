@@ -10,11 +10,11 @@
 
 //TODO: Acertar a busca por id dos produtos. DONE
 
-int menu(int opc, NoLista** l, Descritor* d) {
+int menu(int opc, NoLista** l, Descritor* d, FILE* f1, FILE* f2) {
     int id;
     char nome[30];
 	switch(opc) {
-        case 1 : insereOrdenado(l, *criarCliente());
+        case 1 : opc1(l);
             return true;
         case 2 : printf("Digite o nome completo do cliente >> ");
             setbuf(stdin, NULL);
@@ -24,7 +24,7 @@ int menu(int opc, NoLista** l, Descritor* d) {
         case 3 : imprime(*l);
             system("read b");
             return true;
-        case 4 : insereProduto(d, *criarProduto());
+        case 4 : opcao1(d);
             return true;
         case 5 : printf("Digite o id do produto a ser removido >> ");
             setbuf(stdin, NULL);
@@ -44,7 +44,8 @@ int menu(int opc, NoLista** l, Descritor* d) {
             scanf("%d", &id);
             vender(d, buscaPorId(d, id), id);
             return true;
-        case 9 : 
+        case 9 : salvaTudoC(f1, l);
+            salvaTudoP(f2, d);
             return false;
         } 
 }
