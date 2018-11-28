@@ -13,14 +13,15 @@ int main() {
     int a = true;
     NoLista* l;
     Descritor d;
-    FILE* fcliente = fopen("Cliente.txt", "r");
+    FILE* fcliente = fopen("Arquivos/Cliente.txt", "r");
     lerArquivoC(fcliente, &l);
     fclose(fcliente);
-    FILE* fproduto = fopen("Produto.txt", "r");
+    FILE* fproduto = fopen("Arquivos/Produto.txt", "r");
     lerArquivoP(fproduto, &d);
+    system("echo lendo...; sleep 0.3");
     fclose(fproduto);
-    fcliente = fopen("Cliente.txt", "w");
-    fproduto = fopen("Produto.txt", "w");
+    fcliente = fopen("Arquivos/Cliente.txt", "w");
+    fproduto = fopen("Arquivos/Produto.txt", "w");
     while(a) {
         showMenu();
         int opc;
