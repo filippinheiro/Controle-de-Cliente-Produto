@@ -1,23 +1,30 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 typedef struct cliente {
 	int id;
 	char nome[30];
 } Cliente;
 
-int idTrackC = 1;
-
-Cliente* criarCliente() {
+Cliente* criarCliente(int id) {
 	Cliente* novo = (Cliente*)malloc(sizeof(Cliente));
 	if(novo!=NULL) {
 		setbuf(stdin, NULL);
 		printf("Digite o nome do novo cliente >> ");
 		scanf("%30[^\n]", novo->nome);	
-		novo->id = idTrackC;
-		idTrackC++;
+		novo->id = id;
 	}
 	setbuf(stdin, NULL);
+	return novo;
+}
+
+Cliente* fcriarCliente(int id, char* nome) {
+	Cliente* novo  =(Cliente*)malloc(sizeof(Cliente));
+	if(novo!=NULL){
+		novo->id = id;
+		strcpy(novo->nome, nome);
+	}
 	return novo;
 }
 

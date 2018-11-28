@@ -5,6 +5,6 @@
 #define false 0
 
 
-int menu(int, NoLista**, Descritor*);
+int menu(int, NoLista**, Descritor*,FILE*,FILE*);
 
 #endif

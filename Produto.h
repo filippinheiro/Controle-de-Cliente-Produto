@@ -6,8 +6,8 @@ typedef struct produto {
 	char nome[30], desc[80];
 } Produto;
 
-Produto* criarProduto();
-
+Produto* criarProduto(int);
+Produto* fcriarProduto(int, int, char*, char*);
 void editarProduto(Produto*);
 
 void imprimirProduto(Produto*);

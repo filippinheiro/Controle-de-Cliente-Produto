@@ -6,8 +6,8 @@ typedef struct cliente {
 	char nome[30];
 } Cliente;
 
-Cliente* criarCliente();
-
+Cliente* criarCliente(int);
+Cliente* fcriarCliente(int, char*);
 void editarCliente(Cliente*);
 
 void imprimeCliente(Cliente*);

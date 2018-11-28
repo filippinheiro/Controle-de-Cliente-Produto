@@ -11,16 +11,25 @@ void showMenu();
 
 int main() {
     int a = true;
-    NoLista* l = criar();
-    Descritor d = criarLista();
+    NoLista* l;
+    Descritor d;
+    FILE* fcliente = fopen("Cliente.txt", "r");
+    lerArquivoC(fcliente, &l);
+    fclose(fcliente);
+    FILE* fproduto = fopen("Produto.txt", "r");
+    lerArquivoP(fproduto, &d);
+    fclose(fproduto);
+    fcliente = fopen("Cliente.txt", "w");
+    fproduto = fopen("Produto.txt", "w");
     while(a) {
         showMenu();
         int opc;
         scanf(" %d", &opc);
-        a = menu(opc, &l, &d);
+        a = menu(opc, &l, &d, fcliente, fproduto);
         system("clear");
     }
-
+    fclose(fproduto);
+    fclose(fcliente);
 
 }
 

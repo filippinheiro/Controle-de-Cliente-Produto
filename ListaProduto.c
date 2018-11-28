@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "Produto.h"
+#include "ListaCliente.h"
 
 //TODO: criar função de registrar venda. DONE
 
@@ -15,12 +16,17 @@ typedef struct descritor {
 	int n;
 } Descritor;
 
-Descritor criarLista() {
-	Descritor d;
-	d.n = 0;
-	d.prim = NULL;
-	d.ult = NULL;
-	return d;
+int idCountP = 1;
+
+void opcao1(Descritor* d){
+	insereProduto(d, *criarProduto(idCountP), 0);
+	idCountP++;
+}
+
+void criarLista(Descritor* d) {
+	d->n = 0;
+	d->prim = NULL;
+	d->ult = NULL;
 }
 
 
@@ -40,7 +46,7 @@ Produto* buscaPorId(Descritor* d, int id) {
 }
 
 
-void insereProduto(Descritor* d, Produto produto) {
+void insereProduto(Descritor* d, Produto produto, int file) {
 	No* novo = (No*)malloc(sizeof(No));
 	if(novo!=NULL) {
 		novo->info = produto;
@@ -51,6 +57,7 @@ void insereProduto(Descritor* d, Produto produto) {
 			d->prim = novo;
 		d->ult = novo;
 		d->n++;
+		if(!file) 
 		system("echo Salvo com sucesso; read b");
 	} else {
 		printf("Erro de memória!\n");
@@ -91,6 +98,30 @@ void libera(Descritor* d){
 
 */
 
+void lerArquivoP(FILE* f, Descritor* d){
+	if(f!=NULL){
+		if(tamanho(f) > 0){
+			criarLista(d);
+			int idTracking = 1;
+			while(!feof(f)){
+				int id, qtd;
+				char nome[30], desc[80];
+				fscanf(f, "%[^\t]%d\t%[^\n]%d\n", nome, &id, desc, &qtd);
+				if(id > idTracking)
+					idTracking = id;
+				Produto p = *fcriarProduto(id, qtd, nome, desc);
+				insereProduto(d, p, 1);
+			} 
+			idCountP = idTracking;
+			idCountP++;
+		} else
+			criarLista(d);
+	} else {
+		printf("Erro no arquivo");
+		exit(1);
+	} 
+}
+
 void vender(Descritor* d, Produto* produto, int id) {
     if(produto != NULL) {
         printf("Digite a quantidade a ser vendida >> ");
@@ -125,4 +156,13 @@ void imprimeTudo(Descritor* d) {
 		printf("\n");
 	} else
 		printf("Lista Vazia!\n");
+}
+
+void salvaTudoP(FILE* file, Descritor* d) {
+    if(file != NULL) {
+		No* produto;
+        for(produto = d->prim; produto != NULL; produto = produto->prox){
+            fprintf(file,"%s\t%d\t%s\n%d\n", produto->info.nome, produto->info.id, produto->info.desc, produto->info.qtd);
+        }
+	}
 }

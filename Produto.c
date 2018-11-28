@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct produto {
 	int id;
@@ -8,11 +9,7 @@ typedef struct produto {
 	char desc[80];
 } Produto;
 
-
-
-int idTrackP = 1;
-
-Produto* criarProduto() {
+Produto* criarProduto(int id) {
 	Produto* novo = (Produto*)malloc(sizeof(Produto));
 	if(novo!=NULL) {
 		setbuf(stdin, NULL);
@@ -24,10 +21,20 @@ Produto* criarProduto() {
 		setbuf(stdin, NULL);
 		printf("Digite a quantidade em estoque >> ");
 		scanf("%d", &novo->qtd);
-		novo->id = idTrackP;
-		idTrackP++;
+		novo->id = id;
 	}
 	setbuf(stdin, NULL);
+	return novo;
+}
+
+Produto* fcriarProduto(int id, int qtd, char* nome, char* desc){
+	Produto* novo = (Produto*)malloc(sizeof(Produto));
+	if(novo!=NULL){
+		novo->id = id;
+		novo->qtd = qtd;
+		strcpy(novo->nome, nome);
+		strcpy(novo->desc, desc);
+	} 
 	return novo;
 }
 
